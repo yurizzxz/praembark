@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Menu, Phone, Mail, ChevronDown } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -20,6 +20,7 @@ import {
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -29,8 +30,19 @@ export function Header() {
     }
   };
 
+  const handleNavigation = (sectionId: string) => {
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        scrollToSection(sectionId);
+      }, 50);
+    } else {
+      scrollToSection(sectionId);
+    }
+  };
+
   const navigationItems = [
-    { title: "Início", href: "hero" },
+    { title: "Início", href: "home" },
     { title: "Sobre Nós", href: "about" },
     { title: "Serviços", href: "services" },
     { title: "Benefícios", href: "benefits" },
@@ -72,12 +84,7 @@ export function Header() {
                   <NavigationMenuItem key={item.href}>
                     <NavigationMenuLink
                       className="px-3 py-2 text-md font-medium cursor-pointer transition-colors"
-                      onClick={() => {
-                        const element = document.getElementById(item.href);
-                        if (element) {
-                          element.scrollIntoView({ behavior: "smooth" });
-                        }
-                      }}
+                      onClick={() => handleNavigation(item.href)}
                     >
                       {item.title}
                     </NavigationMenuLink>
