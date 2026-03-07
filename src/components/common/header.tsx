@@ -77,8 +77,8 @@ export function Header() {
             </Link>
           </div>
 
-          <div className="flex items-center space-x-2">
-            <NavigationMenu className="hidden md:flex">
+          <div className="items-center space-x-2 hidden md:flex">
+            <NavigationMenu className="">
               <NavigationMenuList>
                 {navigationItems.map((item) => (
                   <NavigationMenuItem key={item.href}>
@@ -139,36 +139,39 @@ export function Header() {
 
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon">
-                <Menu className="w-5 h-5" />
+              <Button variant="outline" size="icon">
+                <Menu className="size-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-75 sm:w-100">
-              <div className="flex flex-col space-y-4 mt-8">
+            <SheetContent className="px-4">
+              <div className="w-42 h-16 overflow-hidden">
+                <img src="/logo.png" className="relative -top-5 -left-4" />
+              </div>
+              <div className="flex flex-col">
                 {navigationItems.map((item) => (
                   <button
                     key={item.href}
-                    onClick={() => scrollToSection(item.href)}
-                    className="text-left px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors"
+                    onClick={() => handleNavigation(item.href)}
+                    className="text-left text-md px-0 py-2 text-gray-700 hover:text-blue-600 transition-colors"
                   >
                     {item.title}
                   </button>
                 ))}
-                <div className="pt-4 border-t">
-                  <div className="flex items-center space-x-2 text-sm text-gray-600 mb-4">
-                    <Phone className="w-4 h-4" />
-                    <span>(17) 3301-2478</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-sm text-gray-600 mb-4">
-                    <Mail className="w-4 h-4" />
-                    <span>patricia@praembark.com.br</span>
-                  </div>
+                <div className="pt-4 space-y-6">
                   <Button
                     onClick={() => scrollToSection("contact")}
                     className="w-full bg-blue-600 hover:bg-blue-700"
                   >
                     Fale Conosco
                   </Button>
+                  <div className="flex items-center space-x-2 text-sm text-gray-600 mb-2.5">
+                    <Phone className="w-4 h-4" />
+                    <span>(17) 3301-2478</span>
+                  </div>
+                  <div className="flex items-center space-x-2 text-sm text-gray-600 mb-2.5">
+                    <Mail className="w-4 h-4" />
+                    <span>patricia@praembark.com.br</span>
+                  </div>
                 </div>
               </div>
             </SheetContent>

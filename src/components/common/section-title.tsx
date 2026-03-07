@@ -9,7 +9,7 @@ interface SectionTitleProps {
 
 export function SectionTitle({ children, className, subtitle }: SectionTitleProps) {
   return (
-    <div className={cn('text-center', className)}>
+    <div className={cn('md:text-center', className)}>
       <h2 className="text-3xl md:text-4xl font-bold mb-1">
         {children}
       </h2>
