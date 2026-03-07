@@ -93,6 +93,7 @@ export function Contact() {
                             className="text-gray-600 hover:text-blue-600 transition-colors"
                             target={info.action.startsWith('http') ? '_blank' : '_self'}
                             rel={info.action.startsWith('http') ? 'noopener noreferrer' : undefined}
+                            aria-label={`${info.title}: ${info.content}`}
                           >
                             {info.content}
                           </a>
@@ -195,6 +196,7 @@ export function Contact() {
                   type="submit"
                   size="lg"
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                  aria-label="Enviar mensagem via WhatsApp"
                 >
                   <Send className="w-4 h-4 mr-2" />
                   Enviar Mensagem via WhatsApp

@@ -72,7 +72,7 @@ export function Header() {
               }}
             >
               <div className="w-42 h-16 overflow-hidden">
-                <img src="/logo.png" className="relative -top-5 -left-3" />
+                <img src="/logo.png" className="relative -top-5 -left-3" alt="Logo Praembark - Agência de Viagens" />
               </div>
             </Link>
           </div>
@@ -85,6 +85,8 @@ export function Header() {
                     <NavigationMenuLink
                       className="px-3 py-2 text-md font-medium cursor-pointer transition-colors"
                       onClick={() => handleNavigation(item.href)}
+                      aria-label={`Navegar para ${item.title}`}
+                      href={`/#${item.href}`}
                     >
                       {item.title}
                     </NavigationMenuLink>
@@ -97,6 +99,7 @@ export function Header() {
                 <Button
                   variant="ghost"
                   className="px-3 py-2 text-md font-medium cursor-pointer transition-colors"
+                  aria-label="Abrir menu de documentação"
                 >
                   Documentação
                   <ChevronDown className="w-4 h-4" />
@@ -114,6 +117,7 @@ export function Header() {
                   href="https://br.usembassy.gov/pt/visas-pt/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Visitar site oficial de vistos americanos"
                 >
                   <DropdownMenuItem className="cursor-pointer">
                     Visto Americano
@@ -139,23 +143,28 @@ export function Header() {
 
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="md:hidden">
-              <Button variant="outline" size="icon">
+              <Button variant="outline" size="icon" aria-label="Abrir menu de navegação">
                 <Menu className="size-5" />
               </Button>
             </SheetTrigger>
             <SheetContent className="px-4">
               <div className="w-42 h-16 overflow-hidden">
-                <img src="/logo.png" className="relative -top-5 -left-4" />
+                <img src="/logo.png" className="relative -top-5 -left-4" alt="Logo Praembark - Agência de Viagens" />
               </div>
               <div className="flex flex-col">
                 {navigationItems.map((item) => (
-                  <button
+                  <a
                     key={item.href}
-                    onClick={() => handleNavigation(item.href)}
+                    href={`/#${item.href}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavigation(item.href);
+                    }}
                     className="text-left text-md px-0 py-2 text-gray-700 hover:text-blue-600 transition-colors"
+                    aria-label={`Navegar para ${item.title}`}
                   >
                     {item.title}
-                  </button>
+                  </a>
                 ))}
                 <div className="pt-4 space-y-6">
                   <Button

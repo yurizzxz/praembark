@@ -32,6 +32,7 @@ export function Hero() {
                   onClick={() => scrollToSection('contact')}
                   size="lg"
                   className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg"
+                  aria-label="Fale com um especialista em viagens"
                 >
                   Fale com um Especialista
                   <ArrowRight className="ml-2 w-5 h-5" />
@@ -41,6 +42,7 @@ export function Hero() {
                   size="lg"
                   variant="outline"
                   className="border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-6 text-lg"
+                  aria-label="Conhecer nossos serviços de viagem"
                 >
                   Nossos Serviços
                 </Button>

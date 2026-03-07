@@ -61,7 +61,7 @@ export function Footer() {
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
                 <div className="w-42 h-16 overflow-hidden">
-                  <img src="/logo.png" className="relative -top-5 -left-3" />
+                  <img src="/logo.png" className="relative -top-5 -left-3" alt="Logo Praembark - Agência de Viagens" />
                 </div>
               </div>
               <p className="text-gray-300 leading-relaxed">
@@ -76,6 +76,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center transition-colors ${social.hover}`}
+                    aria-label={`Visitar nosso ${social.href.includes('facebook') ? 'Facebook' : social.href.includes('instagram') ? 'Instagram' : 'WhatsApp'}`}
                   >
                     <social.icon className="w-5 h-5" />
                   </a>
@@ -88,12 +89,17 @@ export function Footer() {
               <ul className="space-y-2">
                 {quickLinks.map((link, index) => (
                   <li key={index}>
-                    <button
-                      onClick={() => scrollToSection(link.section)}
+                    <a
+                      href={`/#${link.section}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        scrollToSection(link.section);
+                      }}
                       className="text-gray-300 hover:text-white transition-colors text-left"
+                      aria-label={`Navegar para ${link.title}`}
                     >
                       {link.title}
-                    </button>
+                    </a>
                   </li>
                 ))}
               </ul>

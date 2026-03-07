@@ -96,6 +96,7 @@ export function Services() {
                 onClick={() => scrollToSection('contact')}
                 size="lg"
                 className="bg-blue-600 hover:bg-blue-700 text-white px-8"
+                aria-label="Fale conosco para serviço personalizado"
               >
                 Fale Conosco
               </Button>

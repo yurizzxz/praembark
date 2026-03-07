@@ -7,7 +7,7 @@ export default function NotFound() {
         <div className="text-center">
           <h1 className="text-7xl font-bold text-gray-900 mb-4">404</h1>
           <p className="text-xl text-gray-700 mb-6">Página não encontrada</p>
-          <a href="/" className="text-blue-600 hover:underline">
+          <a href="/" className="text-blue-600 hover:underline" aria-label="Voltar para a página inicial">
             Voltar para a página inicial
           </a>
         </div>
