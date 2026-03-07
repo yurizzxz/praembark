@@ -1,5 +1,5 @@
 import { Footer } from "@/components/common/footer"
-import { Header } from "@/components/common/header"
+import { Header } from '@/components/common/header'
 import { Outlet } from "react-router-dom"
 
 

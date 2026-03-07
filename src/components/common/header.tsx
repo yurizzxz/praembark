@@ -1,16 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, Phone, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Menu, Phone, Mail, ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
 import {
   NavigationMenu,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
+  NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
-import { Link } from "react-router-dom";
+
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -28,6 +35,13 @@ export function Header() {
     { title: "Serviços", href: "services" },
     { title: "Benefícios", href: "benefits" },
     { title: "Contato", href: "contact" },
+  ];
+
+  const dropdownItems = [
+    { title: "Documentos de Embarque", href: "/documents/shipping-documents" },
+    { title: "Passaportes", href: "/documents/passports" },
+    { title: "Vacinas", href: "/documents/vaccines" },
+    { title: "Vistos", href: "/documents/visas" },
   ];
 
   return (
@@ -51,26 +65,63 @@ export function Header() {
             </Link>
           </div>
 
-          <NavigationMenu className="hidden md:flex">
-            <NavigationMenuList>
-              {navigationItems.map((item) => (
-                <NavigationMenuItem key={item.href}>
-                  <NavigationMenuLink
-                    className="px-3 py-2 text-md font-medium cursor-pointer transition-colors"
-                    onClick={() => scrollToSection(item.href)}
-                  >
-                    {item.title}
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-              ))}
-            </NavigationMenuList>
-          </NavigationMenu>
+          <div className="flex items-center space-x-2">
+            <NavigationMenu className="hidden md:flex">
+              <NavigationMenuList>
+                {navigationItems.map((item) => (
+                  <NavigationMenuItem key={item.href}>
+                    <NavigationMenuLink
+                      className="px-3 py-2 text-md font-medium cursor-pointer transition-colors"
+                      onClick={() => {
+                        const element = document.getElementById(item.href);
+                        if (element) {
+                          element.scrollIntoView({ behavior: "smooth" });
+                        }
+                      }}
+                    >
+                      {item.title}
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  className="px-3 py-2 text-md font-medium cursor-pointer transition-colors"
+                >
+                  Documentação
+                  <ChevronDown className="w-4 h-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                {dropdownItems.map((item) => (
+                  <Link key={item.href} to={item.href}>
+                    <DropdownMenuItem className="cursor-pointer">
+                      {item.title}
+                    </DropdownMenuItem>
+                  </Link>
+                ))}
+                <a
+                  href="https://br.usembassy.gov/pt/visas-pt/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <DropdownMenuItem className="cursor-pointer">
+                    Visto Americano
+                  </DropdownMenuItem>
+                </a>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
 
           <div className="hidden lg:flex items-center space-x-4">
             <div className="flex items-center space-x-2 text-sm text-gray-600">
               <Phone className="w-4 h-4" />
               <span>(17) 3301-2478</span>
             </div>
+
             <Button
               onClick={() => scrollToSection("contact")}
               className="bg-blue-600 hover:bg-blue-700"
