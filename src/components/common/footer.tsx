@@ -1,44 +1,57 @@
-import { Phone, Mail, MapPin } from 'lucide-react'
-import { FaFacebookF, FaInstagram, FaWhatsapp } from 'react-icons/fa'
+import { Phone, Mail, MapPin } from "lucide-react";
+import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 const socialLinks = [
-  { href: 'https://www.facebook.com', icon: FaFacebookF, hover: 'hover:bg-blue-600' },
-  { href: 'https://www.instagram.com', icon: FaInstagram, hover: 'hover:bg-blue-600' },
-  { href: 'https://wa.me/551733012478', icon: FaWhatsapp, hover: 'hover:bg-green-600' }
-]
+  {
+    href: "https://www.facebook.com",
+    icon: FaFacebookF,
+    hover: "hover:bg-blue-600",
+  },
+  {
+    href: "https://www.instagram.com",
+    icon: FaInstagram,
+    hover: "hover:bg-blue-600",
+  },
+  {
+    href: "https://wa.me/551733012478",
+    icon: FaWhatsapp,
+    hover: "hover:bg-green-600",
+  },
+];
 
 const quickLinks = [
-  { section: 'hero', title: 'Início' },
-  { section: 'about', title: 'Sobre Nós' },
-  { section: 'services', title: 'Serviços' },
-  { section: 'contact', title: 'Contato' }
-]
+  { section: "hero", title: "Início" },
+  { section: "about", title: "Sobre Nós" },
+  { section: "services", title: "Serviços" },
+  { section: "contact", title: "Contato" },
+];
 
 const servicesList = [
-  'Passagens Aéreas',
-  'Reservas de Hotéis',
-  'Aluguel de Veículos',
-  'Pacotes de Viagens',
-  'Trasladados e Passeios'
-]
+  "Passagens Aéreas",
+  "Reservas de Hotéis",
+  "Aluguel de Veículos",
+  "Pacotes de Viagens",
+  "Trasladados e Passeios",
+];
 
 const contactInfo = [
-  { icon: Phone, content: '(17) 3301-2478' },
-  { icon: Mail, content: 'patricia@praembark.com.br' },
-  { 
-    icon: MapPin, 
-    content: 'Rua Elizabeth, 453 - Jardim Soraia<br />São José do Rio Preto, SP<br />CEP: 15075-030',
-    multiline: true
-  }
-]
+  { icon: Phone, content: "(17) 3301-2478" },
+  { icon: Mail, content: "patricia@praembark.com.br" },
+  {
+    icon: MapPin,
+    content:
+      "Rua Elizabeth, 453 - Jardim Soraia<br />São José do Rio Preto, SP<br />CEP: 15075-030",
+    multiline: true,
+  },
+];
 
 export function Footer() {
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
+    const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      element.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
   return (
     <footer className="bg-gray-900 text-white">
@@ -47,10 +60,13 @@ export function Footer() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
-               <img src="/logo.png" alt="Pra Embark" className="h-30" />
+                <div className="w-42 h-16 overflow-hidden">
+                  <img src="/logo.png" className="relative -top-5 -left-3" />
+                </div>
               </div>
               <p className="text-gray-300 leading-relaxed">
-                Sua agência de viagens com atendimento personalizado para transformar seus sonhos em realidade.
+                Sua agência de viagens com atendimento personalizado para
+                transformar seus sonhos em realidade.
               </p>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
@@ -98,9 +114,17 @@ export function Footer() {
               <h3 className="font-semibold text-lg">Contato</h3>
               <div className="space-y-3">
                 {contactInfo.map((contact, index) => (
-                  <div key={index} className={`flex items-start space-x-3 ${contact.multiline ? 'items-start' : 'items-center'}`}>
-                    <contact.icon className={`w-4 h-4 text-blue-400 ${contact.multiline ? 'mt-1' : ''}`} />
-                    <span className={`text-gray-300 ${contact.multiline ? 'text-sm' : ''}`} dangerouslySetInnerHTML={{ __html: contact.content }} />
+                  <div
+                    key={index}
+                    className={`flex items-start space-x-3 ${contact.multiline ? "items-start" : "items-center"}`}
+                  >
+                    <contact.icon
+                      className={`w-4 h-4 text-blue-400 ${contact.multiline ? "mt-1" : ""}`}
+                    />
+                    <span
+                      className={`text-gray-300 ${contact.multiline ? "text-sm" : ""}`}
+                      dangerouslySetInnerHTML={{ __html: contact.content }}
+                    />
                   </div>
                 ))}
               </div>
@@ -120,5 +144,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

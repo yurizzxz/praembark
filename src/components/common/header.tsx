@@ -10,6 +10,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
+import { Link } from "react-router-dom";
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -34,7 +35,20 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-2">
-            <img src="/logo.png" alt="Pra Embark" className="h-30 mt-2" />
+            <Link
+              to="/"
+              onClick={() => {
+                setTimeout(() => {
+                  document.getElementById("home")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                }, 0);
+              }}
+            >
+              <div className="w-42 h-16 overflow-hidden">
+                <img src="/logo.png" className="relative -top-5 -left-3" />
+              </div>
+            </Link>
           </div>
 
           <NavigationMenu className="hidden md:flex">

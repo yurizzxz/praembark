@@ -11,7 +11,7 @@ export function Hero() {
   }
 
   return (
-    <section id="hero" className="pt-16 bg-linear-to-br from-blue-50 to-white">
+    <section id="home" className="pt-16 bg-linear-to-br from-blue-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-20 lg:py-32 flex justify-center items-center">
           <div className="grid lg:grid-cols-2 gap-12 items-center w-full">

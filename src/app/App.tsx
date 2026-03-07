@@ -1,18 +1,18 @@
-import { Header } from '@/components/common/header'
-import { Hero, About, Services, Benefits, Contact, Footer } from '@/sections'
+import { Footer } from "@/components/common/footer"
+import { Header } from "@/components/common/header"
+import { Outlet } from "react-router-dom"
 
-function App() {
+
+export default function RootLayout() {
   return (
-    <div className="w-full overflow-x-hidden">
+    <>
       <Header />
-      <Hero />
-      <About />
-      <Services />
-      <Benefits />
-      <Contact />
+
+      <main>
+        <Outlet />
+      </main>
+
       <Footer />
-    </div>
+    </>
   )
 }
-
-export default App
