@@ -44,7 +44,7 @@ export function About() {
           <div className="space-y-6">
             <p className="text-lg text-gray-700 leading-relaxed">
               A{" "}
-              <span className="font-semibold text-blue-600">
+              <span className="font-semibold text-primary">
                 Pra Embark Viagens E Turismo
               </span>{" "}
               é uma agência que trabalha com uma proposta diferenciada no
@@ -71,9 +71,9 @@ export function About() {
               sua plenitude.
             </p>
 
-            <Card className="bg-blue-50 border-l-4 border-blue-600 rounded-r-lg">
+            <Card className="bg-primary/5 border-l-4 border-primary rounded-r-lg">
               <CardContent className="p-6">
-                <p className="text-lg font-medium text-blue-900 italic">
+                <p className="text-lg font-medium text-primary/90 italic">
                   "Nossa paixão é transformar seus sonhos de viagem em
                   realidade, com cuidado, profissionalismo e atenção aos
                   detalhes que fazem toda a diferença."
@@ -89,8 +89,8 @@ export function About() {
                 className="p-6 shadow-sm border border-gray-100"
               >
                 <CardContent className="p-0">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                    <item.icon className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                    <item.icon className="w-6 h-6 text-primary" />
                   </div>
                   <h3 className="font-semibold text-gray-900 mb-2">
                     {item.title}

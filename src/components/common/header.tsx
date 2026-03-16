@@ -135,7 +135,7 @@ export function Header() {
 
             <Button
               onClick={() => scrollToSection("contact")}
-              className="bg-blue-600 hover:bg-blue-700"
+              className="bg-primary hover:bg-primary/90"
             >
               Fale Conosco
             </Button>
@@ -160,7 +160,7 @@ export function Header() {
                       e.preventDefault();
                       handleNavigation(item.href);
                     }}
-                    className="text-left text-md px-0 py-2 text-gray-700 hover:text-blue-600 transition-colors"
+                    className="text-left text-md px-0 py-2 text-gray-700 hover:text-primary transition-colors"
                     aria-label={`Navegar para ${item.title}`}
                   >
                     {item.title}
@@ -169,7 +169,7 @@ export function Header() {
                 <div className="pt-4 space-y-6">
                   <Button
                     onClick={() => scrollToSection("contact")}
-                    className="w-full bg-blue-600 hover:bg-blue-700"
+                    className="w-full bg-primary hover:bg-primary/90"
                   >
                     Fale Conosco
                   </Button>

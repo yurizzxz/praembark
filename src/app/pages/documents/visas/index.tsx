@@ -18,9 +18,9 @@ export default function Visas() {
             </p>
           </div>
 
-          <Card className="bg-blue-50 border-l-4 border-blue-600 rounded-r-lg mb-8">
+          <Card className="bg-primary/5 border-l-4 border-primary rounded-r-lg mb-8">
             <CardContent className="p-6">
-              <h3 className="text-xl font-bold text-blue-900 mb-4">O que é</h3>
+              <h3 className="text-xl font-bold text-primary/90 mb-4">O que é</h3>
               <p className="text-gray-700 leading-relaxed">
                 O visto é a permissão de entrada concedida por um país ao cidadão estrangeiro. Varia de acordo com a duração e o objetivo da viagem, e deve ser solicitado no consulado ou embaixada do país de destino.
               </p>
@@ -51,13 +51,13 @@ export default function Visas() {
             </CardContent>
           </Card>
 
-          <Card className="bg-blue-50 border-l-4 border-blue-600 rounded-r-lg mb-8">
+          <Card className="bg-primary/5 border-l-4 border-primary rounded-r-lg mb-8">
             <CardContent className="p-6">
-              <h3 className="text-xl font-bold text-blue-900 mb-4">Mais Informações</h3>
+              <h3 className="text-xl font-bold text-primary/90 mb-4">Mais Informações</h3>
               <p className="text-gray-700 leading-relaxed">
                 Consulte os portais oficiais para informações detalhadas:
               </p>
-              <ul className="list-disc list-inside mt-2 text-blue-800">
+              <ul className="list-disc list-inside mt-2 text-bg-primary/10">
                 <li>
                   <a href="https://www.gov.br/mre/pt-br/assuntos/Embaixadas-Consulados-Missoes/de-outros-paises-no-brasil" target="_blank" rel="noopener noreferrer">
                     Embaixadas e Consulados de outros países no Brasil

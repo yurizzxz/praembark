@@ -11,7 +11,7 @@ export function Hero() {
   }
 
   return (
-    <section id="home" className="pt-16 bg-linear-to-br from-blue-50 to-white">
+    <section id="home" className="pt-16 bg-linear-to-br from-primary/5 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-20 lg:py-32 flex justify-center items-center">
           <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
@@ -19,7 +19,7 @@ export function Hero() {
               <div className="space-y-4">
                 <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
                   Sua Viagem dos Sonhos
-                  <span className="text-blue-600 block">Começa Aqui</span>
+                  <span className="text-primary block">Começa Aqui</span>
                 </h1>
                 <p className="text-xl text-gray-600 leading-relaxed">
                   Atendimento personalizado com profissionais que realmente conhecem o assunto. 
@@ -31,7 +31,7 @@ export function Hero() {
                 <Button
                   onClick={() => scrollToSection('contact')}
                   size="lg"
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg"
+                  className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg"
                   aria-label="Fale com um especialista em viagens"
                 >
                   Fale com um Especialista
@@ -41,7 +41,7 @@ export function Hero() {
                   onClick={() => scrollToSection('services')}
                   size="lg"
                   variant="outline"
-                  className="border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-6 text-lg"
+                  className="border-primary text-primary hover:bg-primary/10 px-8 py-6 text-lg"
                   aria-label="Conhecer nossos serviços de viagem"
                 >
                   Nossos Serviços
@@ -52,8 +52,8 @@ export function Hero() {
                 <Card className="border-0 shadow-sm">
                   <CardContent className="p-4">
                     <div className="flex items-center space-x-3">
-                      <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                        <MapPin className="w-6 h-6 text-blue-600" />
+                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                        <MapPin className="w-6 h-6 text-primary" />
                       </div>
                       <div>
                         <p className="font-semibold text-gray-900">Melhores Destinos</p>
@@ -66,8 +66,8 @@ export function Hero() {
                 <Card className="border-0 shadow-sm">
                   <CardContent className="p-4">
                     <div className="flex items-center space-x-3">
-                      <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                        <Users className="w-6 h-6 text-blue-600" />
+                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                        <Users className="w-6 h-6 text-primary" />
                       </div>
                       <div>
                         <p className="font-semibold text-gray-900">Atendimento Personalizado</p>
@@ -80,8 +80,8 @@ export function Hero() {
                 <Card className="border-0 shadow-sm">
                   <CardContent className="p-4">
                     <div className="flex items-center space-x-3">
-                      <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                        <DollarSign className="w-6 h-6 text-blue-600" />
+                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                        <DollarSign className="w-6 h-6 text-primary" />
                       </div>
                       <div>
                         <p className="font-semibold text-gray-900">Melhores Preços</p>
@@ -94,27 +94,27 @@ export function Hero() {
             </div>
 
             <div className="relative">
-              <div className="absolute inset-0 bg-blue-600 rounded-3xl transform rotate-3 opacity-10"></div>
-              <Card className="relative bg-linear-to-br from-blue-600 to-blue-800 border-0 rounded-3xl p-8 text-white">
+              <div className="absolute inset-0 bg-primary rounded-3xl transform rotate-3 opacity-10"></div>
+              <Card className="relative bg-linear-to-br from-primary to-primary/80 border-0 rounded-3xl p-8 text-white">
                 <CardContent className="p-0 space-y-6">
                   <div className="text-center">
                     <h3 className="text-2xl font-bold mb-2">Viaje com Confiança</h3>
-                    <p className="text-blue-100">
+                    <p className="text-white">
                       Especialistas em viagens personalizadas para você, sua família ou sua empresa
                     </p>
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="bg-white/10 rounded-lg p-4 text-center">
                       <p className="text-3xl font-bold">15+</p>
-                      <p className="text-sm text-blue-100">Anos de Experiência</p>
+                      <p className="text-sm text-white">Anos de Experiência</p>
                     </div>
                     <div className="bg-white/10 rounded-lg p-4 text-center">
                       <p className="text-3xl font-bold">1000+</p>
-                      <p className="text-sm text-blue-100">Clientes Satisfeitos</p>
+                      <p className="text-sm text-white">Clientes Satisfeitos</p>
                     </div>
                   </div>
                   <div className="text-center">
-                    <p className="text-sm text-blue-100 mb-4">Contato Direto</p>
+                    <p className="text-sm text-white mb-4">Contato Direto</p>
                     <p className="text-xl font-semibold">(17) 3301-2478</p>
                   </div>
                 </CardContent>

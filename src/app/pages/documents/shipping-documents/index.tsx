@@ -14,9 +14,9 @@ export default function Documentation() {
           </p>
         </div>
 
-        <Card className="bg-blue-50 border-l-4 border-blue-600 rounded-r-lg mb-8">
+        <Card className="bg-primary/5 border-l-4 border-primary rounded-r-lg mb-8">
           <CardContent className="p-6">
-            <p className="text-lg font-medium text-blue-900">
+            <p className="text-lg font-medium text-primary/90">
               Para garantir a tranquilidade e conforto de sua viagem, organize a
               documentação necessária antes do embarque. Os documentos devem
               estar em boas condições para identificação por foto.
@@ -30,7 +30,7 @@ export default function Documentation() {
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 Voos Nacionais
               </h3>
-              <p className="text-gray-600 mb-6">
+              <p className="text-primary mb-6">
                 Tenha em mãos um dos documentos abaixo:
               </p>
 
@@ -44,7 +44,7 @@ export default function Documentation() {
                   "Carteira de identidade emitida por Conselho ou Federação",
                 ].map((doc, index) => (
                   <li key={index} className="flex items-start">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 shrink-0"></div>
+                    <div className="w-2 h-2 bg-primary/10 rounded-full mt-2 mr-3 shrink-0"></div>
                     <span className="text-gray-700">{doc}</span>
                   </li>
                 ))}
@@ -67,7 +67,7 @@ export default function Documentation() {
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 Voos Internacionais
               </h3>
-              <p className="text-gray-600 mb-6">
+              <p className="text-primary mb-6">
                 Documentos aceitos para países do Mercosul:
               </p>
 
@@ -80,7 +80,7 @@ export default function Documentation() {
                   "Bolívia - Cédula de Identidade ou Passaporte",
                 ].map((country, index) => (
                   <div key={index} className="flex items-start">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 shrink-0"></div>
+                    <div className="w-2 h-2 bg-primary/10 rounded-full mt-2 mr-3 shrink-0"></div>
                     <span className="text-gray-700">{country}</span>
                   </div>
                 ))}

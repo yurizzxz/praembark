@@ -14,9 +14,9 @@ export default function Passports() {
               <p>Documento essencial para viagens internacionais</p>
             </div>
 
-            <Card className="bg-blue-50 border-l-4 border-blue-600 rounded-r-lg mb-8">
+            <Card className="bg-primary/5 border-l-4 border-primary rounded-r-lg mb-8">
               <CardContent className="p-6">
-                <h3 className="text-xl font-bold text-blue-900 mb-4">
+                <h3 className="text-xl font-bold text-primary/90 mb-4">
                   O que é o Passaporte?
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
@@ -37,8 +37,8 @@ export default function Passports() {
 
                   <div className="space-y-4">
                     <div className="flex items-start space-x-3">
-                      <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center shrink-0">
-                        <span className="text-blue-600 font-bold">1</span>
+                      <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
+                        <span className="text-primary font-bold">1</span>
                       </div>
                       <div className="flex-1">
                         <h4 className="font-semibold text-gray-900 mb-1">
@@ -54,8 +54,8 @@ export default function Passports() {
                     </div>
 
                     <div className="flex items-start space-x-3">
-                      <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center shrink-0">
-                        <span className="text-blue-600 font-bold">2</span>
+                      <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
+                        <span className="text-primary font-bold">2</span>
                       </div>
                       <div className="flex-1">
                         <h4 className="font-semibold text-gray-900 mb-1">
@@ -70,8 +70,8 @@ export default function Passports() {
                     </div>
 
                     <div className="flex items-start space-x-3">
-                      <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center shrink-0">
-                        <span className="text-blue-600 font-bold">3</span>
+                      <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
+                        <span className="text-primary font-bold">3</span>
                       </div>
                       <div className="flex-1">
                         <h4 className="font-semibold text-gray-900 mb-1">

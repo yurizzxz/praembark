@@ -80,8 +80,8 @@ export function Contact() {
                 <Card key={index} className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border-0">
                   <CardContent className="p-0">
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center shrink-0">
-                        <info.icon className="w-6 h-6 text-blue-600" />
+                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                        <info.icon className="w-6 h-6 text-primary" />
                       </div>
                       <div className="flex-1">
                         <h4 className="font-semibold text-gray-900 mb-1">
@@ -90,7 +90,7 @@ export function Contact() {
                         {info.action ? (
                           <a
                             href={info.action}
-                            className="text-gray-600 hover:text-blue-600 transition-colors"
+                            className="text-gray-600 hover:text-primary transition-colors"
                             target={info.action.startsWith('http') ? '_blank' : '_self'}
                             rel={info.action.startsWith('http') ? 'noopener noreferrer' : undefined}
                             aria-label={`${info.title}: ${info.content}`}
@@ -109,12 +109,12 @@ export function Contact() {
               ))}
             </div>
 
-            <Card className="bg-blue-50 border-l-4 border-blue-600 rounded-r-lg py-1">
+            <Card className="bg-primary/5 border-l-4 border-primary rounded-r-lg py-1">
               <CardContent className="p-6">
-                <h4 className="font-semibold text-blue-900 mb-2">
+                <h4 className="font-semibold text-primary/90 mb-2">
                   Resposta Rápida
                 </h4>
-                <p className="text-blue-800">
+                <p className="text-primary/80">
                   Nossa equipe se compromete a responder sua mensagem em até 24 horas úteis. 
                   Para assuntos urgentes, ligue diretamente para nosso telefone.
                 </p>
@@ -188,14 +188,14 @@ export function Contact() {
                     onChange={handleInputChange}
                     rows={5}
                     placeholder="Nos conte mais sobre sua viagem dos sonhos..."
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none"
                   />
                 </div>
 
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                  className="w-full bg-primary hover:bg-primary/90 text-white"
                   aria-label="Enviar mensagem via WhatsApp"
                 >
                   <Send className="w-4 h-4 mr-2" />

@@ -1,6 +1,0 @@
-export * from './hero'
-export * from './about'
-export * from './services'
-export * from './benefits'
-export * from './contact'
-export * from '../components/common/footer'

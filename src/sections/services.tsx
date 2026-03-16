@@ -53,7 +53,7 @@ export function Services() {
   return (
     <section id="services" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionTitle subtitle="Conheça todos os serviços que oferecemos para tornar sua viagem inesquecível">
+        <SectionTitle className='mb-6' subtitle="Conheça todos os serviços que oferecemos para tornar sua viagem inesquecível">
           Nossos Serviços
         </SectionTitle>
 
@@ -61,8 +61,8 @@ export function Services() {
           {services.map((service, index) => (
             <Card key={index} className="border border-gray-200 rounded-xl hover:shadow-lg transition-shadow duration-300">
               <CardContent className="p-6">
-                <div className="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <service.icon className="w-7 h-7 text-blue-600" />
+                <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <service.icon className="w-7 h-7 text-primary" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
                   {service.title}
@@ -84,7 +84,7 @@ export function Services() {
         </div>
 
         <div className="mt-12 text-center">
-          <Card className="max-w-4xl mx-auto bg-blue-50 border-0">
+          <Card className="max-w-4xl mx-auto bg-primary/5 border-0">
             <CardContent className="p-8">
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">
                 Precisa de um serviço personalizado?
@@ -95,7 +95,7 @@ export function Services() {
               <Button
                 onClick={() => scrollToSection('contact')}
                 size="lg"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8"
+                className="bg-primary hover:bg-primary/90 text-white px-8"
                 aria-label="Fale conosco para serviço personalizado"
               >
                 Fale Conosco

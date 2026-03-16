@@ -42,14 +42,14 @@ export default function Vaccines() {
               </CardContent>
             </Card>
 
-            <Card className="bg-blue-50 border-l-4 border-blue-600 rounded-r-lg mb-8">
+            <Card className="bg-primary/5 border-l-4 border-primary rounded-r-lg mb-8">
               <CardContent className="p-6">
-                <h3 className="text-xl font-bold text-blue-900 mb-4">Certificado Internacional</h3>
+                <h3 className="text-xl font-bold text-primary/90 mb-4">Certificado Internacional</h3>
                 <p className="text-gray-700 leading-relaxed">
                   Para viagens internacionais, é necessário o Certificado Internacional de Vacinação ou Profilaxia (CIVP).  
                   Consulte mais informações nos portais oficiais:
                 </p>
-                <ul className="list-disc list-inside mt-2 text-blue-800">
+                <ul className="list-disc list-inside mt-2 text-primary/10">
                   <li>
                     <a href="https://www.gov.br/anvisa/pt-br" target="_blank" rel="noopener noreferrer">
                       ANVISA

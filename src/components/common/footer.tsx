@@ -5,12 +5,12 @@ const socialLinks = [
   {
     href: "https://www.facebook.com",
     icon: FaFacebookF,
-    hover: "hover:bg-blue-600",
+    hover: "hover:bg-primary",
   },
   {
     href: "https://www.instagram.com",
     icon: FaInstagram,
-    hover: "hover:bg-blue-600",
+    hover: "hover:bg-primary",
   },
   {
     href: "https://wa.me/551733012478",
@@ -61,7 +61,7 @@ export function Footer() {
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
                 <div className="w-42 h-16 overflow-hidden">
-                  <img src="/logo.png" className="relative -top-5 -left-3" alt="Logo Praembark - Agência de Viagens" />
+                  <img src="/praembark-white.png" className="relative" alt="Logo Praembark - Agência de Viagens" />
                 </div>
               </div>
               <p className="text-gray-300 leading-relaxed">
@@ -141,10 +141,7 @@ export function Footer() {
         <div className="border-t border-gray-800 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-400 text-sm">
-              © 2024 Pra Embark Viagens E Turismo. Todos os direitos reservados.
-            </p>
-            <p className="text-gray-400 text-sm">
-              Desenvolvido com ❤️ para fazer seus sonhos alçarem voo
+              © 2026 Pra Embark Viagens E Turismo. Todos os direitos reservados.
             </p>
           </div>
         </div>
