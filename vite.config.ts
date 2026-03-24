@@ -13,6 +13,11 @@ export default defineConfig({
   },
   server: {
     host: true,
-    allowedHosts: [".ngrok-free.app"],
+    allowedHosts: true, // Em versões novas, 'true' libera geral, melhor que 'all'
+    cors: true,
+    strictPort: false,
+    hmr: {
+      clientPort: 443, // Isso ajuda o Hot Reload a funcionar via HTTPS do Cloudflare
+    },
   },
 });

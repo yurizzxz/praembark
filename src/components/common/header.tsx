@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import {
@@ -20,7 +20,17 @@ import {
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -57,7 +67,11 @@ export function Header() {
   ];
 
   return (
-    <header className="fixed top-0 w-full bg-white border-b border-zinc-200 z-50">
+    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      isScrolled 
+        ? 'bg-white border-b border-zinc-200 shadow-md' 
+        : 'bg-transparent border-transparent'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-2">
@@ -83,7 +97,9 @@ export function Header() {
                 {navigationItems.map((item) => (
                   <NavigationMenuItem key={item.href}>
                     <NavigationMenuLink
-                      className="px-3 py-2 text-md font-medium cursor-pointer transition-colors"
+                      className={`px-3 py-2 text-md font-medium cursor-pointer transition-colors ${
+                        isScrolled ? 'text-gray-900 hover:text-primary' : 'text-white hover:text-white/80'
+                      }`}
                       onClick={() => handleNavigation(item.href)}
                       aria-label={`Navegar para ${item.title}`}
                       href={`/#${item.href}`}
@@ -98,7 +114,9 @@ export function Header() {
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="ghost"
-                  className="px-3 py-2 text-md font-medium cursor-pointer transition-colors"
+                  className={`px-3 py-2 text-md font-medium cursor-pointer transition-colors ${
+                    isScrolled ? 'text-gray-900 hover:text-primary' : 'text-white hover:text-white/80'
+                  }`}
                   aria-label="Abrir menu de documentação"
                 >
                   Documentação
@@ -127,7 +145,9 @@ export function Header() {
             </DropdownMenu>
           </div>
 
-          <div className="hidden lg:flex items-center space-x-4">
+          <div className={`hidden lg:flex items-center space-x-4 ${
+              isScrolled ? 'text-gray-600' : 'text-white'
+            }`}>
             <div className="flex items-center space-x-2 text-sm text-gray-600">
               <Phone className="w-4 h-4" />
               <span>(17) 3301-2478</span>
@@ -135,7 +155,11 @@ export function Header() {
 
             <Button
               onClick={() => scrollToSection("contact")}
-              className="bg-primary hover:bg-primary/90"
+              className={`${
+                isScrolled 
+                  ? 'bg-primary hover:bg-primary/90 text-white' 
+                  : 'bg-white text-primary hover:bg-white/90'
+              }`}
             >
               Fale Conosco
             </Button>
@@ -143,7 +167,12 @@ export function Header() {
 
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="md:hidden">
-              <Button variant="outline" size="icon" aria-label="Abrir menu de navegação">
+              <Button 
+                variant={isScrolled ? "outline" : "ghost"} 
+                size="icon" 
+                aria-label="Abrir menu de navegação"
+                className={isScrolled ? "" : "text-white hover:bg-white/20"}
+              >
                 <Menu className="size-5" />
               </Button>
             </SheetTrigger>
