@@ -13,11 +13,19 @@ export function Hero() {
   return (
     <section id="home" className="pt-16 relative min-h-[80dvh]">
       <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-white">
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-black/60"></div>
         <img 
           src="/img1.jpg"
-          alt="Viagem dos sonhos - paisagem montanhosa"
-          className="w-full h-full object-cover"
+          alt="Viagem dos sonhos"
+          className="w-full h-full object-cover will-change-transform"
+          loading="eager"
+          decoding="sync"
+          fetchPriority="high"
+          style={{
+            imageRendering: 'auto',
+            transform: 'translateZ(0)',
+            backfaceVisibility: 'hidden'
+          }}
         />
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
