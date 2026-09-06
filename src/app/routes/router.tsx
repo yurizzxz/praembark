@@ -1,11 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import RootLayout from "../App";
 import Home from "../pages/home";
-import Passports from "../pages/documents/passports";
-import Documentation from "../pages/documents/shipping-documents";
-import Vaccines from "../pages/documents/vaccines";
-import Visas from "../pages/documents/visas";
-import NotFound from "../pages/not-found";
 
 export const router = createBrowserRouter([
   {
@@ -17,23 +12,45 @@ export const router = createBrowserRouter([
       },
       {
         path: "/documents/shipping-documents",
-        element: <Documentation />,
+        lazy: async () => {
+          const module = await import(
+            "../pages/documents/shipping-documents"
+          );
+
+          return { Component: module.default };
+        },
       },
       {
         path: "/documents/passports",
-        element: <Passports />,
+        lazy: async () => {
+          const module = await import("../pages/documents/passports");
+
+          return { Component: module.default };
+        },
       },
       {
         path: "/documents/vaccines",
-        element: <Vaccines />,
+        lazy: async () => {
+          const module = await import("../pages/documents/vaccines");
+
+          return { Component: module.default };
+        },
       },
       {
         path: "/documents/visas",
-        element: <Visas />,
+        lazy: async () => {
+          const module = await import("../pages/documents/visas");
+
+          return { Component: module.default };
+        },
       },
       {
         path: "*",
-        element: <NotFound />,
+        lazy: async () => {
+          const module = await import("../pages/not-found");
+
+          return { Component: module.default };
+        },
       },
     ],
   },

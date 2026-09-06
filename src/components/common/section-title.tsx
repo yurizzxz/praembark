@@ -5,14 +5,15 @@ interface SectionTitleProps {
   children: ReactNode
   className?: string
   subtitle?: string
+  as?: 'h1' | 'h2'
 }
 
-export function SectionTitle({ children, className, subtitle }: SectionTitleProps) {
+export function SectionTitle({ children, className, subtitle, as: Heading = 'h2' }: SectionTitleProps) {
   return (
     <div className={cn('md:text-center', className)}>
-      <h2 className="text-3xl md:text-4xl font-bold mb-1">
+      <Heading className="text-3xl md:text-4xl font-bold mb-1">
         {children}
-      </h2>
+      </Heading>
       {subtitle && (
         <p className="text-lg max-w-3xl mx-auto">
           {subtitle}

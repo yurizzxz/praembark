@@ -1,78 +1,76 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { SectionTitle } from "@/components/common/section-title";
+import { DocumentPage, InfoSection, Notice } from "@/components/documents";
+
+const officialLinks = [
+  {
+    href: "https://www.gov.br/mre/pt-br/assuntos/Embaixadas-Consulados-Missoes/de-outros-paises-no-brasil",
+    label: "Embaixadas e consulados de outros países no Brasil",
+  },
+  {
+    href: "https://www.gov.br/mre/pt-br",
+    label: "Ministério das Relações Exteriores",
+  },
+] as const;
 
 export default function Visas() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <section className="py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-6">
-            <SectionTitle className="text-left">
-              Vistos
-            </SectionTitle>
-            <p>
-              Vistos de turismo: permissão de entrada concedida por um país ao cidadão estrangeiro.
-            </p>
-            <p className="text-sm text-gray-500 mt-1">
-              Fonte: Ministério das Relações Exteriores
-            </p>
-          </div>
+    <DocumentPage
+      title="Vistos"
+      description="Vistos de turismo: permissão de entrada concedida por um país ao cidadão estrangeiro."
+      source="Ministério das Relações Exteriores"
+    >
+      <InfoSection
+        title="O que é"
+        description="O visto é a permissão de entrada concedida por um país ao cidadão estrangeiro. Varia conforme a duração e o objetivo da viagem e deve ser solicitado no consulado ou na embaixada do país de destino."
+      />
 
-          <Card className="bg-primary/5 border-l-4 border-primary rounded-r-lg mb-8">
-            <CardContent className="p-6">
-              <h3 className="text-xl font-bold text-primary/90 mb-4">O que é</h3>
-              <p className="text-gray-700 leading-relaxed">
-                O visto é a permissão de entrada concedida por um país ao cidadão estrangeiro. Varia de acordo com a duração e o objetivo da viagem, e deve ser solicitado no consulado ou embaixada do país de destino.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-green-50 border-l-4 border-green-600 rounded-r-lg mb-8">
-            <CardContent className="p-6">
-              <h3 className="text-xl font-bold text-green-900 mb-4">Como Solicitar</h3>
-              <p className="text-gray-700 leading-relaxed">
-                Brasileiros que desejam obter o visto devem comparecer ao consulado ou embaixada do país de destino. Estados Unidos, Japão, China, Índia, entre outros, exigem documentação nos passaportes brasileiros. A maioria dos países da Oceania, África e Europa oriental também solicita visto.
-              </p>
-              <p className="text-gray-700 leading-relaxed mt-2">
-                Nações da Europa ocidental e América Latina geralmente não solicitam visto para turistas brasileiros, devido a acordos de reciprocidade com o Brasil.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-yellow-50 border-l-4 border-yellow-600 rounded-r-lg mb-8">
-            <CardContent className="p-6">
-              <h3 className="text-xl font-bold text-yellow-900 mb-4">Processo e Formulário</h3>
-              <p className="text-gray-700 leading-relaxed">
-                O interessado deve preencher o máximo possível de informações no formulário obrigatório do Sistema de Controle e Emissão de Documentos de Viagem (SCEDV), reduzindo o prazo de processamento.
-              </p>
-              <p className="text-gray-700 leading-relaxed mt-2">
-                Em seguida, é necessário entregar o protocolo assinado com os documentos originais do viajante e o comprovante de pagamento ao agente consular na embaixada ou consulado respectivo. Todo o processo pode ser acompanhado pelo site do SCEDV.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-primary/5 border-l-4 border-primary rounded-r-lg mb-8">
-            <CardContent className="p-6">
-              <h3 className="text-xl font-bold text-primary/90 mb-4">Mais Informações</h3>
-              <p className="text-gray-700 leading-relaxed">
-                Consulte os portais oficiais para informações detalhadas:
-              </p>
-              <ul className="list-disc list-inside mt-2 text-bg-primary/10">
-                <li>
-                  <a href="https://www.gov.br/mre/pt-br/assuntos/Embaixadas-Consulados-Missoes/de-outros-paises-no-brasil" target="_blank" rel="noopener noreferrer">
-                    Embaixadas e Consulados de outros países no Brasil
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.gov.br/mre/pt-br" target="_blank" rel="noopener noreferrer">
-                    Ministério das Relações Exteriores
-                  </a>
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
+      <InfoSection title="Como solicitar">
+        <div className="space-y-3 text-muted-foreground">
+          <p>
+            Brasileiros que desejam obter visto devem procurar o consulado ou a
+            embaixada do país de destino. Estados Unidos, Japão, China e Índia,
+            entre outros, exigem documentação no passaporte brasileiro.
+          </p>
+          <p>
+            Países da Europa ocidental e da América Latina geralmente dispensam
+            visto para turismo, conforme acordos de reciprocidade com o Brasil.
+          </p>
         </div>
-      </section>
-    </div>
+      </InfoSection>
+
+      <InfoSection title="Processo e formulário">
+        <div className="space-y-3 text-muted-foreground">
+          <p>
+            Preencha as informações solicitadas pelo sistema consular e guarde
+            o protocolo da solicitação.
+          </p>
+          <p>
+            Entregue o protocolo assinado, os documentos originais e o
+            comprovante de pagamento conforme instruções do consulado.
+          </p>
+        </div>
+      </InfoSection>
+
+      <Notice title="Confirme antes da viagem" tone="warning">
+        Regras migratórias mudam. Verifique prazos e exigências nos canais
+        oficiais do destino.
+      </Notice>
+
+      <InfoSection title="Portais oficiais">
+        <ul className="space-y-3">
+          {officialLinks.map((link) => (
+            <li key={link.href}>
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-primary underline-offset-4 hover:underline"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </InfoSection>
+    </DocumentPage>
   );
 }

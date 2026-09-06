@@ -58,7 +58,7 @@ export function Contact() {
   ]
 
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className="bg-background py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle className='mb-8' subtitle="Entre em contato conosco e comece a planejar sua próxima aventura">
           Fale Conosco
@@ -67,30 +67,30 @@ export function Contact() {
         <div className="grid lg:grid-cols-2 gap-12">
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+              <h3 className="mb-4 text-2xl font-semibold text-foreground">
                 Informações de Contato
               </h3>
-              <p className="text-gray-600 mb-8">
+              <p className="mb-8 text-muted-foreground">
                 Estamos à disposição para atender suas necessidades e ajudar a planejar a viagem dos seus sonhos.
               </p>
             </div>
 
             <div className="grid gap-6">
-              {contactInfo.map((info, index) => (
-                <Card key={index} className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border-0">
+              {contactInfo.map((info) => (
+                <Card key={info.title} className="border-0 bg-muted p-4 shadow-none transition-colors hover:bg-accent">
                   <CardContent className="p-0">
                     <div className="flex items-start space-x-4">
                       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
                         <info.icon className="w-6 h-6 text-primary" />
                       </div>
                       <div className="flex-1">
-                        <h4 className="font-semibold text-gray-900 mb-1">
+                        <h4 className="mb-1 font-semibold text-foreground">
                           {info.title}
                         </h4>
                         {info.action ? (
                           <a
                             href={info.action}
-                            className="text-gray-600 hover:text-primary transition-colors"
+                            className="text-muted-foreground transition-colors hover:text-primary"
                             target={info.action.startsWith('http') ? '_blank' : '_self'}
                             rel={info.action.startsWith('http') ? 'noopener noreferrer' : undefined}
                             aria-label={`${info.title}: ${info.content}`}
@@ -98,7 +98,7 @@ export function Contact() {
                             {info.content}
                           </a>
                         ) : (
-                          <p className="text-gray-600">
+                          <p className="text-muted-foreground">
                             {info.content}
                           </p>
                         )}
@@ -109,12 +109,12 @@ export function Contact() {
               ))}
             </div>
 
-            <Card className="bg-primary/5 border-l-4 border-primary rounded-r-lg py-1">
+            <Card className="border border-info-border bg-info py-1 text-info-foreground shadow-none">
               <CardContent className="p-6">
-                <h4 className="font-semibold text-primary/90 mb-2">
+                <h4 className="mb-2 font-semibold">
                   Resposta Rápida
                 </h4>
-                <p className="text-primary/80">
+                <p>
                   Nossa equipe se compromete a responder sua mensagem em até 24 horas úteis. 
                   Para assuntos urgentes, ligue diretamente para nosso telefone.
                 </p>
@@ -122,14 +122,14 @@ export function Contact() {
             </Card>
           </div>
 
-          <Card className="bg-gray-50 rounded-xl border-0">
+          <Card className="border-0 bg-muted shadow-none">
             <CardContent className="p-8">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+              <h3 className="mb-6 text-2xl font-semibold text-foreground">
                 Envie sua Mensagem
               </h3>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="name" className="mb-2 block text-sm font-medium text-foreground">
                     Nome Completo *
                   </label>
                   <Input
@@ -145,7 +145,7 @@ export function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="email" className="mb-2 block text-sm font-medium text-foreground">
                     E-mail *
                   </label>
                   <Input
@@ -161,7 +161,7 @@ export function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="phone" className="mb-2 block text-sm font-medium text-foreground">
                     Telefone *
                   </label>
                   <Input
@@ -177,7 +177,7 @@ export function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="message" className="mb-2 block text-sm font-medium text-foreground">
                     Mensagem *
                   </label>
                   <textarea
@@ -188,21 +188,21 @@ export function Contact() {
                     onChange={handleInputChange}
                     rows={5}
                     placeholder="Nos conte mais sobre sua viagem dos sonhos..."
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none"
+                    className="w-full resize-none rounded-md border border-input bg-transparent px-3 py-2 text-foreground outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
                   />
                 </div>
 
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full bg-primary hover:bg-primary/90 text-white"
+                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
                   aria-label="Enviar mensagem via WhatsApp"
                 >
                   <Send className="w-4 h-4 mr-2" />
                   Enviar Mensagem via WhatsApp
                 </Button>
 
-                <p className="text-sm text-gray-500 text-center">
+                <p className="text-center text-sm text-muted-foreground">
                   Ao enviar, você será redirecionado para o WhatsApp para continuar a conversa.
                 </p>
               </form>

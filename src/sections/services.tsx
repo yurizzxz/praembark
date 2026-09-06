@@ -51,29 +51,29 @@ export function Services() {
   }
 
   return (
-    <section id="services" className="py-20 bg-white">
+    <section id="services" className="bg-background py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle className='mb-6' subtitle="Conheça todos os serviços que oferecemos para tornar sua viagem inesquecível">
           Nossos Serviços
         </SectionTitle>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <Card key={index} className="border border-gray-200 rounded-xl hover:shadow-lg transition-shadow duration-300">
+          {services.map((service) => (
+            <Card key={service.title} className="border-border bg-card transition-shadow duration-300 hover:shadow-md">
               <CardContent className="p-6">
                 <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                   <service.icon className="w-7 h-7 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="mb-3 text-xl font-semibold text-foreground">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">
+                <p className="mb-4 leading-relaxed text-muted-foreground">
                   {service.description}
                 </p>
                 <ul className="space-y-2">
                   {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-sm text-gray-600">
-                      <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2"></div>
+                    <li key={featureIndex} className="flex items-center text-sm text-muted-foreground">
+                      <div className="mr-2 size-1.5 rounded-full bg-primary"></div>
                       {feature}
                     </li>
                   ))}
@@ -86,16 +86,16 @@ export function Services() {
         <div className="mt-12 text-center">
           <Card className="max-w-4xl mx-auto bg-primary/5 border-0">
             <CardContent className="p-8">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+              <h3 className="mb-4 text-2xl font-semibold text-foreground">
                 Precisa de um serviço personalizado?
               </h3>
-              <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+              <p className="mx-auto mb-6 max-w-2xl text-muted-foreground">
                 Nossa equipe está preparada para criar soluções sob medida para suas necessidades específicas de viagem.
               </p>
               <Button
                 onClick={() => scrollToSection('contact')}
                 size="lg"
-                className="bg-primary hover:bg-primary/90 text-white px-8"
+                className="bg-primary px-8 text-primary-foreground hover:bg-primary/90"
                 aria-label="Fale conosco para serviço personalizado"
               >
                 Fale Conosco

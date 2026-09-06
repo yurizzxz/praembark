@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Menu, Phone, Mail, ChevronDown } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -22,14 +22,19 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  const isHome = pathname === "/";
+  const isHeaderSolid = !isHome || isScrolled;
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (sectionId: string) => {
@@ -41,7 +46,7 @@ export function Header() {
   };
 
   const handleNavigation = (sectionId: string) => {
-    if (location.pathname !== "/") {
+    if (pathname !== "/") {
       navigate("/");
       setTimeout(() => {
         scrollToSection(sectionId);
@@ -56,7 +61,6 @@ export function Header() {
     { title: "Sobre Nós", href: "about" },
     { title: "Serviços", href: "services" },
     { title: "Benefícios", href: "benefits" },
-    { title: "Contato", href: "contact" },
   ];
 
   const dropdownItems = [
@@ -67,11 +71,13 @@ export function Header() {
   ];
 
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-white border-b border-zinc-200 shadow-md' 
-        : 'bg-transparent border-transparent'
-    }`}>
+    <header
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isHeaderSolid
+          ? "border-b border-border bg-background shadow-sm"
+          : "bg-transparent border-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-2">
@@ -86,19 +92,25 @@ export function Header() {
               }}
             >
               <div className="w-42 h-16 overflow-hidden">
-                <img src="/logo.png" className="relative -top-5 -left-3" alt="Logo Praembark - Agência de Viagens" />
+                <img
+                  src="/logo.png"
+                  className="relative -top-5 -left-3"
+                  alt="Logo Praembark - Agência de Viagens"
+                />
               </div>
             </Link>
           </div>
 
-          <div className="items-center space-x-2 hidden md:flex">
+          <div className="hidden items-center gap-1 lg:flex">
             <NavigationMenu className="">
               <NavigationMenuList>
                 {navigationItems.map((item) => (
                   <NavigationMenuItem key={item.href}>
                     <NavigationMenuLink
-                      className={`px-3 py-2 text-md font-medium cursor-pointer transition-colors ${
-                        isScrolled ? 'text-gray-900 hover:text-primary' : 'text-white hover:text-white/80'
+                      className={`cursor-pointer bg-transparent px-3 py-2 text-sm font-medium transition-colors ${
+                        isHeaderSolid
+                          ? "text-foreground hover:text-primary "
+                          : "text-primary-foreground hover:bg-transparent hover:text-primary-foreground/80"
                       }`}
                       onClick={() => handleNavigation(item.href)}
                       aria-label={`Navegar para ${item.title}`}
@@ -111,11 +123,13 @@ export function Header() {
               </NavigationMenuList>
             </NavigationMenu>
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
+              <DropdownMenuTrigger className="hover:bg-transparent" asChild>
                 <Button
                   variant="ghost"
-                  className={`px-3 py-2 text-md font-medium cursor-pointer transition-colors ${
-                    isScrolled ? 'text-gray-900 hover:text-primary' : 'text-white hover:text-white/80'
+                  className={`cursor-pointer px-3 py-2 text-sm font-medium transition-colors ${
+                    isHeaderSolid
+                      ? "text-foreground hover:text-primary"
+                      : "text-primary-foreground hover:text-primary-foreground/80"
                   }`}
                   aria-label="Abrir menu de documentação"
                 >
@@ -145,40 +159,61 @@ export function Header() {
             </DropdownMenu>
           </div>
 
-          <div className={`hidden lg:flex items-center space-x-4 ${
-              isScrolled ? 'text-gray-600' : 'text-white'
-            }`}>
-            <div className="flex items-center space-x-2 text-sm text-gray-600">
+          <div
+            className={`hidden items-center gap-4 xl:flex ${
+              isHeaderSolid
+                ? "text-muted-foreground"
+                : "text-primary-foreground"
+            }`}
+          >
+            <div className="flex items-center gap-2 text-sm">
               <Phone className="w-4 h-4" />
-              <span>(17) 3301-2478</span>
+              <span
+                className={
+                  isHeaderSolid
+                    ? "text-muted-foreground"
+                    : "text-primary-foreground"
+                }
+              >
+                (17) 3301-2478
+              </span>
             </div>
 
             <Button
-              onClick={() => scrollToSection("contact")}
+              onClick={() => handleNavigation("contact")}
               className={`${
-                isScrolled 
-                  ? 'bg-primary hover:bg-primary/90 text-white' 
-                  : 'bg-white text-primary hover:bg-white/90'
+                isHeaderSolid
+                  ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                  : "bg-background text-primary hover:bg-background/90"
               }`}
+              asChild
             >
-              Fale Conosco
+              <a href="#contact">Fale Conosco</a>
             </Button>
           </div>
 
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild className="md:hidden">
-              <Button 
-                variant={isScrolled ? "outline" : "ghost"} 
-                size="icon" 
+            <SheetTrigger asChild className="lg:hidden">
+              <Button
+                variant={isHeaderSolid ? "outline" : "ghost"}
+                size="icon"
                 aria-label="Abrir menu de navegação"
-                className={isScrolled ? "" : "text-white hover:bg-white/20"}
+                className={
+                  isHeaderSolid
+                    ? ""
+                    : "text-primary-foreground hover:bg-primary-foreground/20"
+                }
               >
                 <Menu className="size-5" />
               </Button>
             </SheetTrigger>
             <SheetContent className="px-4">
               <div className="w-42 h-16 overflow-hidden">
-                <img src="/logo.png" className="relative -top-5 -left-4" alt="Logo Praembark - Agência de Viagens" />
+                <img
+                  src="/logo.png"
+                  className="relative -top-5 -left-4"
+                  alt="Logo Praembark - Agência de Viagens"
+                />
               </div>
               <div className="flex flex-col">
                 {navigationItems.map((item) => (
@@ -189,7 +224,7 @@ export function Header() {
                       e.preventDefault();
                       handleNavigation(item.href);
                     }}
-                    className="text-left text-md px-0 py-2 text-gray-700 hover:text-primary transition-colors"
+                    className="min-h-11 px-0 py-2 text-left text-base text-foreground transition-colors hover:text-primary"
                     aria-label={`Navegar para ${item.title}`}
                   >
                     {item.title}
@@ -197,16 +232,16 @@ export function Header() {
                 ))}
                 <div className="pt-4 space-y-6">
                   <Button
-                    onClick={() => scrollToSection("contact")}
-                    className="w-full bg-primary hover:bg-primary/90"
+                    onClick={() => handleNavigation("contact")}
+                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
                   >
                     Fale Conosco
                   </Button>
-                  <div className="flex items-center space-x-2 text-sm text-gray-600 mb-2.5">
+                  <div className="mb-2.5 flex items-center gap-2 text-sm text-muted-foreground">
                     <Phone className="w-4 h-4" />
                     <span>(17) 3301-2478</span>
                   </div>
-                  <div className="flex items-center space-x-2 text-sm text-gray-600 mb-2.5">
+                  <div className="mb-2.5 flex items-center gap-2 text-sm text-muted-foreground">
                     <Mail className="w-4 h-4" />
                     <span>patricia@praembark.com.br</span>
                   </div>

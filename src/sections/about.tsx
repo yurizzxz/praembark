@@ -31,18 +31,18 @@ const companyValues = [
 
 export function About() {
   return (
-    <section id="about" className="py-20 bg-gray-50">
+    <section id="about" className="bg-muted py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="space-y-1 md:text-center mb-10">
           <SectionTitle>Quem Somos</SectionTitle>
-          <p className="text-lg text-gray-700 leading-relaxed mb-6">
+          <p className="mb-6 text-lg leading-relaxed text-muted-foreground">
             Conheça nossa história e compromisso com sua satisfação
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <p className="text-lg text-gray-700 leading-relaxed">
+            <p className="text-lg leading-relaxed text-muted-foreground">
               A{" "}
               <span className="font-semibold text-primary">
                 Pra Embark Viagens E Turismo
@@ -55,7 +55,7 @@ export function About() {
               .
             </p>
 
-            <p className="text-lg text-gray-700 leading-relaxed">
+            <p className="text-lg leading-relaxed text-muted-foreground">
               Ao entrar em contato conosco você será atendido por pessoas que
               realmente conhecem o assunto, sendo informado sobre os melhores
               destinos, os melhores hotéis e os preços mais baixos, além de
@@ -63,7 +63,7 @@ export function About() {
               gosto e o seu bolso.
             </p>
 
-            <p className="text-lg text-gray-700 leading-relaxed">
+            <p className="text-lg leading-relaxed text-muted-foreground">
               Nossa equipe é composta de profissionais competentes e totalmente
               qualificados na área, além de uma estrutura organizada e preparada
               para receber bem e satisfazer suas necessidades. Nossa missão é
@@ -71,8 +71,8 @@ export function About() {
               sua plenitude.
             </p>
 
-            <Card className="bg-primary/5 border-l-4 border-primary rounded-r-lg">
-              <CardContent className="p-6">
+            <Card className="border-0 bg-primary/5 shadow-none">
+              <CardContent className="p-5 sm:p-6">
                 <p className="text-lg font-medium text-primary/90 italic">
                   "Nossa paixão é transformar seus sonhos de viagem em
                   realidade, com cuidado, profissionalismo e atenção aos
@@ -82,20 +82,22 @@ export function About() {
             </Card>
           </div>
 
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
             {companyValues.map((item, index) => (
               <Card
                 key={index}
-                className="p-6 shadow-sm border border-gray-100"
+                className="border-border bg-card p-5 sm:p-6"
               >
                 <CardContent className="p-0">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                     <item.icon className="w-6 h-6 text-primary" />
                   </div>
-                  <h3 className="font-semibold text-gray-900 mb-2">
+                  <h3 className="mb-2 font-semibold text-foreground">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 text-sm">{item.description}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {item.description}
+                  </p>
                 </CardContent>
               </Card>
             ))}
