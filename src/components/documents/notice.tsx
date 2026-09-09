@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { CircleCheck, Info, ShieldAlert, TriangleAlert } from "lucide-react";
 import type { ReactNode } from "react";
 import type { NoticeTone } from "./types";
 
@@ -8,6 +9,13 @@ const toneStyles: Record<NoticeTone, string> = {
   warning: "border-warning-border bg-warning text-warning-foreground",
   danger: "border-danger-border bg-danger text-danger-foreground",
 };
+
+const toneIcons = {
+  info: Info,
+  success: CircleCheck,
+  warning: TriangleAlert,
+  danger: ShieldAlert,
+} as const;
 
 interface NoticeProps {
   title?: string;
@@ -22,13 +30,20 @@ export function Notice({
   children,
   className,
 }: NoticeProps) {
+  const Icon = toneIcons[tone];
+
   return (
     <aside
-      className={cn("rounded-xl border p-5 sm:p-6", toneStyles[tone], className)}
+      className={cn("border p-5 sm:p-6", toneStyles[tone], className)}
       role="note"
     >
-      {title && <p className="mb-2 text-lg font-bold">{title}</p>}
-      <div className="leading-relaxed">{children}</div>
+      <div className="flex gap-4">
+        <Icon aria-hidden="true" className="mt-0.5 size-5 shrink-0" />
+        <div>
+          {title && <p className="mb-2 text-lg font-bold">{title}</p>}
+          <div className="leading-7">{children}</div>
+        </div>
+      </div>
     </aside>
   );
 }

@@ -1,105 +1,50 @@
-import { Award, Users, Target, Heart } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { SectionTitle } from "@/components/common/section-title";
+import { Headphones, Route, ShieldCheck } from "lucide-react";
 
-const companyValues = [
+const values = [
   {
-    icon: Users,
-    title: "Equipe Especializada",
-    description:
-      "Profissionais competentes e totalmente qualificados na área de turismo",
+    icon: Route,
+    title: "Roteiros que respeitam seu jeito",
+    description: "Destino, ritmo e orçamento pensados para sua viagem real.",
   },
   {
-    icon: Heart,
-    title: "Atendimento Personalizado",
-    description:
-      "Cuidado individual com cada cliente para garantir a melhor experiência",
+    icon: Headphones,
+    title: "Atendimento humano do início ao fim",
+    description: "Você fala com quem conhece o roteiro e acompanha cada etapa.",
   },
   {
-    icon: Target,
-    title: "Missão Clara",
-    description:
-      "Garantir que você desfrute da satisfação de viajar em sua plenitude",
-  },
-  {
-    icon: Award,
-    title: "Qualidade",
-    description:
-      "Estrutura organizada e preparada para receber bem e satisfazer suas necessidades",
+    icon: ShieldCheck,
+    title: "Escolhas com segurança",
+    description: "Parceiros confiáveis, documentação orientada e suporte presente.",
   },
 ];
 
 export function About() {
   return (
-    <section id="about" className="bg-muted py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-1 md:text-center mb-10">
-          <SectionTitle>Quem Somos</SectionTitle>
-          <p className="mb-6 text-lg leading-relaxed text-muted-foreground">
-            Conheça nossa história e compromisso com sua satisfação
-          </p>
+    <section id="about" className="bg-white py-28 sm:py-36">
+      <div className="mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-[0.82fr_1.18fr] lg:gap-24 lg:px-10">
+        <div>
+          <p className="mb-5 text-sm font-semibold text-sky-700">Sobre a Pra Embark</p>
+          <h2 className="font-display max-w-[11ch] text-[clamp(2.75rem,5vw,4.6rem)] leading-[1.02] tracking-[-0.03em] text-primary text-balance">
+            Sua viagem começa muito antes do embarque.
+          </h2>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              A{" "}
-              <span className="font-semibold text-primary">
-                Pra Embark Viagens E Turismo
-              </span>{" "}
-              é uma agência que trabalha com uma proposta diferenciada no
-              mercado:{" "}
-              <span className="font-semibold">
-                Atendimento personalizado ao cliente
-              </span>
-              .
-            </p>
+        <div className="lg:pt-10">
+          <p className="max-w-2xl text-lg leading-8 text-slate-700 text-pretty">
+            Planejar bem é poder aproveitar sem ruído. Nossa equipe combina
+            conhecimento de turismo, escuta atenta e cuidado com os detalhes
+            para criar uma experiência coerente com você.
+          </p>
 
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              Ao entrar em contato conosco você será atendido por pessoas que
-              realmente conhecem o assunto, sendo informado sobre os melhores
-              destinos, os melhores hotéis e os preços mais baixos, além de
-              locais para diversão e entretenimento. Tudo de acordo com o seu
-              gosto e o seu bolso.
-            </p>
-
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              Nossa equipe é composta de profissionais competentes e totalmente
-              qualificados na área, além de uma estrutura organizada e preparada
-              para receber bem e satisfazer suas necessidades. Nossa missão é
-              trabalhar para que o cliente desfrute da satisfação de viajar em
-              sua plenitude.
-            </p>
-
-            <Card className="border-0 bg-primary/5 shadow-none">
-              <CardContent className="p-5 sm:p-6">
-                <p className="text-lg font-medium text-primary/90 italic">
-                  "Nossa paixão é transformar seus sonhos de viagem em
-                  realidade, com cuidado, profissionalismo e atenção aos
-                  detalhes que fazem toda a diferença."
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
-            {companyValues.map((item, index) => (
-              <Card
-                key={index}
-                className="border-border bg-card p-5 sm:p-6"
-              >
-                <CardContent className="p-0">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                    <item.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="mb-2 font-semibold text-foreground">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {item.description}
-                  </p>
-                </CardContent>
-              </Card>
+          <div className="mt-12 divide-y divide-slate-200 border-y border-slate-200">
+            {values.map((item) => (
+              <div key={item.title} className="grid gap-4 py-7 sm:grid-cols-[3rem_1fr]">
+                <item.icon className="size-6 text-sky-700" strokeWidth={1.6} />
+                <div>
+                  <h3 className="text-lg font-semibold text-primary">{item.title}</h3>
+                  <p className="mt-2 max-w-xl leading-7 text-slate-600">{item.description}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>

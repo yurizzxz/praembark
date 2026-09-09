@@ -1,11 +1,7 @@
-"use client";
-
 import { useState } from "react";
-import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+import { ArrowRight, Clock, Mail, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent } from "@/components/ui/card";
-import { SectionTitle } from "@/components/common/section-title";
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -15,239 +11,134 @@ export function Contact() {
     message: "",
   });
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    const { name, value } = event.target;
+    setFormData((current) => ({ ...current, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const message = [
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    const text = [
       `Olá! Meu nome é ${formData.name}.`,
-      "Gostaria de mais informações sobre seus serviços.",
-      "",
+      "Gostaria de planejar uma viagem com a Pra Embark.",
+      `Telefone: ${formData.phone}`,
       `E-mail: ${formData.email}`,
-      `Mensagem: ${formData.message}`,
+      `Viagem: ${formData.message}`,
     ].join("\n");
-    const params = new URLSearchParams({ text: message });
-
-    const whatsappUrl = `https://wa.me/551733012478?${params.toString()}`;
-
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    window.open(
+      `https://wa.me/551733012478?${new URLSearchParams({ text }).toString()}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
   };
-
-  const contactInfo = [
-    {
-      icon: Phone,
-      title: "Telefone",
-      content: "(17) 3301-2478",
-      action: "tel:1733012478",
-    },
-    {
-      icon: Mail,
-      title: "E-mail",
-      content: "patricia@praembark.com.br",
-      action: "mailto:patricia@praembark.com.br",
-    },
-    {
-      icon: MapPin,
-      title: "Endereço",
-      content: "Rua Elizabeth, 453 - Jardim Soraia, São José do Rio Preto, SP",
-      action:
-        "https://maps.google.com/?q=Rua+Elizabeth+453+Jardim+Soraia+São+José+do+Rio+Preto+SP",
-    },
-    {
-      icon: Clock,
-      title: "Horário de Atendimento",
-      content: "Segunda a Sexta: 9h às 18h | Sábado: 9h às 12h",
-      action: null,
-    },
-  ];
 
   return (
-    <section id="contact" className="bg-background py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionTitle
-          className="mb-8"
-          subtitle="Entre em contato conosco e comece a planejar sua próxima aventura"
-        >
-          Fale Conosco
-        </SectionTitle>
+    <section id="contact" className="bg-white py-28 sm:py-36">
+      <div className="mx-auto grid max-w-7xl gap-16 px-5 sm:px-8 lg:grid-cols-[0.78fr_1.22fr] lg:gap-24 lg:px-10">
+        <div>
+          <p className="text-sm font-semibold text-sky-700">
+            Sua próxima história
+          </p>
+          <h2 className="font-display mt-5 max-w-[10ch] text-[clamp(2.75rem,5vw,4.8rem)] leading-[1.02] tracking-[-0.03em] text-primary text-balance">
+            Vamos planejar seu próximo embarque?
+          </h2>
+          <p className="mt-7 max-w-md leading-7 text-slate-600">
+            Conte o que imagina. Nossa equipe retorna com as perguntas certas
+            para transformar ideia em roteiro.
+          </p>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          <div className="space-y-8">
-            <div>
-              <h3 className="mb-4 text-2xl font-semibold text-foreground">
-                Informações de Contato
-              </h3>
-              <p className="mb-8 text-muted-foreground">
-                Estamos à disposição para atender suas necessidades e ajudar a
-                planejar a viagem dos seus sonhos.
-              </p>
-            </div>
-
-            <div className="grid gap-6">
-              {contactInfo.map((info) => (
-                <Card
-                  key={info.title}
-                  className="border-0 bg-muted p-4 shadow-none transition-colors hover:bg-accent"
-                >
-                  <CardContent className="p-0">
-                    <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
-                        <info.icon className="w-6 h-6 text-primary" />
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="mb-1 font-semibold text-foreground">
-                          {info.title}
-                        </h4>
-                        {info.action ? (
-                          <a
-                            href={info.action}
-                            className="text-muted-foreground transition-colors hover:text-primary"
-                            target={
-                              info.action.startsWith("http")
-                                ? "_blank"
-                                : "_self"
-                            }
-                            rel={
-                              info.action.startsWith("http")
-                                ? "noopener noreferrer"
-                                : undefined
-                            }
-                            aria-label={`${info.title}: ${info.content}`}
-                          >
-                            {info.content}
-                          </a>
-                        ) : (
-                          <p className="text-muted-foreground">
-                            {info.content}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-            <Card className="border border-info-border bg-info py-1 text-info-foreground shadow-none">
-              <CardContent className="p-6">
-                <h4 className="mb-2 font-semibold">Resposta Rápida</h4>
-                <p>
-                  Nossa equipe se compromete a responder sua mensagem em até 24
-                  horas úteis. Para assuntos urgentes, ligue diretamente para
-                  nosso telefone.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          <Card className="border-0 bg-muted shadow-none">
-            <CardContent className="p-8">
-              <h3 className="mb-6 text-2xl font-semibold text-foreground">
-                Envie sua Mensagem
-              </h3>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="mb-2 block text-sm font-medium text-foreground"
-                  >
-                    Nome Completo *
-                  </label>
-                  <Input
-                    id="name"
-                    name="name"
-                    type="text"
-                    required
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    placeholder="Seu nome completo"
-                    className="w-full"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="mb-2 block text-sm font-medium text-foreground"
-                  >
-                    E-mail *
-                  </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder="seu@email.com"
-                    className="w-full"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="phone"
-                    className="mb-2 block text-sm font-medium text-foreground"
-                  >
-                    Telefone *
-                  </label>
-                  <Input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    required
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    placeholder="(00) 00000-0000"
-                    className="w-full"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="mb-2 block text-sm font-medium text-foreground"
-                  >
-                    Mensagem *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    rows={5}
-                    placeholder="Nos conte mais sobre sua viagem dos sonhos..."
-                    className="w-full resize-none rounded-md border border-input bg-transparent px-3 py-2 text-foreground outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
-                  aria-label="Enviar mensagem via WhatsApp"
-                >
-                  <Send className="w-4 h-4 mr-2" />
-                  Enviar Mensagem via WhatsApp
-                </Button>
-
-                <p className="text-center text-sm text-muted-foreground">
-                  Ao enviar, você será redirecionado para o WhatsApp para
-                  continuar a conversa.
-                </p>
-              </form>
-            </CardContent>
-          </Card>
+          <address className="mt-10 space-y-5 not-italic text-sm text-slate-600">
+            <a
+              href="tel:+551733012478"
+              className="flex items-center gap-3 hover:text-primary"
+            >
+              <Phone className="size-4 text-sky-700" /> (17) 3301-2478
+            </a>
+            <a
+              href="mailto:patricia@praembark.com.br"
+              className="flex items-center gap-3 hover:text-primary"
+            >
+              <Mail className="size-4 text-sky-700" /> patricia@praembark.com.br
+            </a>
+            <p className="flex items-start gap-3">
+              <MapPin className="mt-0.5 size-4 shrink-0 text-sky-700" /> Rua
+              Elizabeth, 453 — Jardim Soraia
+              <br />
+              São José do Rio Preto, SP
+            </p>
+            <p className="flex items-center gap-3">
+              <Clock className="size-4 text-sky-700" /> Segunda a sexta, 9h às
+              18h
+            </p>
+          </address>
         </div>
+
+        <form onSubmit={handleSubmit} className=" bg-slate-50 space-y-6 p-6 sm:p-10">
+          <div className="sm:grid-cols-2 grid gap-x-6 gap-y-7 ">
+            <label className="grid gap-2 text-sm font-semibold text-primary">
+              Nome
+              <Input
+                variant="underline"
+                required
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Seu nome completo"
+              />
+            </label>
+            <label className="grid gap-2 text-sm font-semibold text-primary">
+              Telefone
+              <Input
+                variant="underline"
+                required
+                name="phone"
+                type="tel"
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="(00) 00000-0000"
+              />
+            </label>
+            <label className="grid gap-2 text-sm font-semibold text-primary sm:col-span-2">
+              E-mail
+              <Input
+                variant="underline"
+                required
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="voce@email.com"
+              />
+            </label>
+            <label className="grid gap-2 text-sm font-semibold text-primary sm:col-span-2">
+              Como você imagina essa viagem?
+              <textarea
+                required
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                rows={4}
+                placeholder="Destino, período, número de viajantes..."
+                className="resize-none border-b border-slate-300 bg-transparent px-0 py-3 font-normal text-slate-900 outline-none placeholder:text-slate-500 focus:border-sky-700"
+              />
+            </label>
+          </div>
+          <div className="w-full text-center">
+            <Button
+              variant="brand"
+              type="submit"
+              className="group w-full gap-3"
+            >
+              Conversar pelo WhatsApp
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+            </Button>
+            <p className="mt-4 text-xs leading-5 text-slate-500">
+              Ao enviar, o WhatsApp abrirá com sua mensagem pronta.
+            </p>
+          </div>
+        </form>
       </div>
     </section>
   );
