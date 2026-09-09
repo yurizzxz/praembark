@@ -3,7 +3,6 @@ import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react-swc";
 import { defineConfig } from "vite";
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
@@ -13,11 +12,8 @@ export default defineConfig({
   },
   server: {
     host: true,
-    allowedHosts: true, // Em versões novas, 'true' libera geral, melhor que 'all'
+    allowedHosts: true,
     cors: true,
     strictPort: false,
-    hmr: {
-      clientPort: 443, // Isso ajuda o Hot Reload a funcionar via HTTPS do Cloudflare
-    },
   },
 });
