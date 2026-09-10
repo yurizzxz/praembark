@@ -22,7 +22,7 @@ export function Hero() {
         alt="Paisagem de viagem vista entre montanhas ao pôr do sol"
         width="3840"
         height="2160"
-        className="absolute inset-0 -z-20 size-full object-cover object-center"
+        className="absolute inset-0 -z-20 -scale-x-100 size-full object-cover object-center"
         loading="eager"
         decoding="async"
         fetchPriority="high"
